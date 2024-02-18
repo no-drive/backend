@@ -1,7 +1,10 @@
+#Ignorando la carpeta node modules
 node_modules/
 # Ignore .env files
-*.env
+.env
 
 # Ignore .vscode directory
 .vscode/
+
+#Ignorar carpeta de fiels
 src/files
