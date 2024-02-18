@@ -2,11 +2,11 @@ import imagen from "../models/mongoImagenes.js";
 import notificaicon from "../models/notificaciones.js";
 import fs from "fs-extra";
 import { path } from "../controllers/Cfiles.js";
-
-
-
+/***
+ * Controlador de para compartir archivos
+ */
 export async function notify(idFile, idusuario) {
-
+  //Crear una notificación para compartir un archivo
   const notify = new notificaicon({
     idusuario: idusuario,
     dirrecion: idFile,
@@ -16,7 +16,7 @@ export async function notify(idFile, idusuario) {
   return await notify.save();
 }
 export async function share(idFile, idusuario) {
-
+  //Añadir un archivo compartido a la base de datos de mongodb
   return imagen.findOne({ dirrecion: idFile }).then(
     (fileToShare) => {
       const fileShare = new imagen({
@@ -31,14 +31,14 @@ export async function share(idFile, idusuario) {
     }).catch((error) => { return { response: error } })
 
 }
-
 export async function rmShare(idFile, idusuario) {
-
+  //ELiminar un compartir de la base de datos de mongo DB
   const filter = { idusuario: idusuario, rol: 2, dirrecion: idFile };
   return imagen.deleteMany(filter).then(() => { return { response: "Eliminado Correctamente" } });
 
 }
 export async function getShare(idusuario) {
+  //Obtener los archivos compartidos.
   try {
     const filtro = { idusuario: idusuario, rol: 2 };
     const data = await imagen.find(filtro,).then((respuesta) => {

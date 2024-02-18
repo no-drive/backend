@@ -17,11 +17,14 @@ router.post('/login', async (req, res) => {
 router.delete('/DeleteUser', validacion, (req, res) => {
   res.json(rmUser(req.body.userId));
 });
+// Ruta para cambiar la contraseña
 router.patch('/chpass', validacion, async (req, res) => {
   res.json(await chpass(req.body));
 });
+//Ruta para validar el usuario
 router.post('/validate', validacionUser, (req, res) => {
 });
+//Ruta para Obtener todas las personas dentro de la aplicación
 router.get('/people', validacion, async (req, res) => {
   res.json({ response: await allPeople() });
 })

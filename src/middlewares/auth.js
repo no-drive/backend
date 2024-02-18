@@ -1,6 +1,8 @@
 import jwt, { decode } from 'jsonwebtoken';
 const secretKey = 'CLAVE';
 
+
+//Funcion para validar la veracidad de un token
 export function validacion(req, res, next) {
   console.log(req.body)
   let token = req.header('Authorization');

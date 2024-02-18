@@ -17,8 +17,8 @@ import userRoutes from './routes/Ruser.js';
 import filesRoutes from './routes/Rfiles.js';
 import shareFiles from './routes/Rshare.js';
 app.use('/api/users', userRoutes); // Rutas para usuarios
-app.use('/api/files', filesRoutes); // Rutas para productos
-app.use('/api/share', shareFiles); // Rutas para productos
+app.use('/api/files', filesRoutes); // Rutas para los archivos
+app.use('/api/share', shareFiles); // Rutas para compartir archivos
 
 // Manejo de errores
 app.use((err, req, res, next) => {

@@ -3,11 +3,16 @@ import imagen from '../models/mongoImagenes.js';
 import db from '../db/mongoose.js';
 import fs from 'fs';
 import { getShare } from '../controllers/Cshare.js';
+/**
+ * Controlador para la administracion de los archivos
+ */
+
 let _imagen = {};
 export const path = "C:/Users/alejo/OneDrive/Documentos/repositorios/no-drive/backend/src/";
 
 const storage = multer.diskStorage(
   {
+    //Posicionamos el archivo en temp para poder guardarlo en la base de datos
     destination: path + `temp/`,
     filename: function (req, file, cb) {
       console.log('En la imagen:', req.body);
@@ -23,10 +28,12 @@ const storage = multer.diskStorage(
   }
 );
 export const upload = multer({ storage: storage });
-
 export async function addMongo(user) {
   console.log(user);
   mvFile(user.userId)
+  /**
+   * Añadimos el archivo a la base de datos mongo
+   */
   const Nuevaimagen = new imagen({
     nombre: String(user.nombre),
     dirrecion: _imagen.dirrecion,
@@ -40,10 +47,13 @@ export async function addMongo(user) {
   });
 }
 function mvFile(folder) {
-
   if (!fs.existsSync(path + folder)) {
     createFolder(path + 'files/' + folder);
   }
+  /**
+   * Tomamos la direccion donde va a estar el archivo sino existe se crea 
+   * teniendo que cuenta que va /files/<id_usuario>/<id_file>
+   */
   const sourcePath = path + 'temp/' + _imagen.dirrecion;
   const targetPath = path + 'files/' + folder + '/' + _imagen.dirrecion;
   fs.rename(sourcePath, targetPath, (err) => {
@@ -54,7 +64,6 @@ function mvFile(folder) {
     }
   });
 }
-
 function createFolder(folderPath) {
   fs.mkdir(folderPath, (err) => {
     if (err) {
@@ -64,7 +73,6 @@ function createFolder(folderPath) {
     }
   });
 }
-
 export async function findUser(idusuario) {
   try {
     const filtro = { idusuario: idusuario, rol: 1 };
@@ -107,13 +115,11 @@ export async function findUser(idusuario) {
 
 
 }
+//Obtener los archivos compartidos
 export async function _getShare(idusuario) {
   return await getShare(idusuario);
 }
-
-
 export async function rmFile(idusuario, idFile) {
-  console.log(idFile)
   const filePath = path + 'files/' + idusuario + '/' + idFile;
   fs.unlink(filePath, (err) => {
     if (err) {
@@ -134,7 +140,7 @@ export async function rmAllFiles(idusuario, res) {
     console.error(respuesta);
     return respuesta;
   });
-
+  //ELiminar de forma recursiva los archivos de un usuario
   data.forEach((item) => {
     const filePath = path + 'files/' + idusuario + '/' + item.dirrecion;
     fs.unlink(filePath, (err) => {
