@@ -85,6 +85,7 @@ export async function _login( data){
       userId:userData.idusuario,
       username:userData.nameusuario
     }
+    console.log("Generando JWT😊")
     // Genera el JWT
     jwt.sign(payload, secretKey, { expiresIn: '1h' }, (err, token) => {
       if (err) {
@@ -113,7 +114,6 @@ export async function chpass(data){
 
 
 export  function validacionUser(req,res){
-
   let token=req.header('Authorization');
   try{
       token = ((req.header('Authorization')).replace('Bearer','')).replace(' ','' );
