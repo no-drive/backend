@@ -1,6 +1,6 @@
-import  Sequelize  from 'sequelize';
+import Sequelize from 'sequelize';
 
- const sequelize = new Sequelize('_gestionarchivos', 'root', 'tu_contraseña', {
+const sequelize = new Sequelize('_gestionarchivos', 'root', 'tu_contraseña', {
   host: 'localhost',
   dialect: 'mysql',
 });
@@ -13,4 +13,4 @@ sequelize
   .catch(err => {
     console.error('Error de conexión a la base de datos:', err);
   });
-  export default sequelize;
+export default sequelize;
