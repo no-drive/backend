@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
     ports:
-      - "3306:3306"  # Puerto del contenedor:Puerto del host
+      - "3306"  # Puerto del contenedor:Puerto del host
     volumes:
       - ~/contenedores/no_drive/db/mysql_data:/var/lib/mysql
     networks:
@@ -31,7 +31,7 @@ services:
     image: mongodb-raspberrypi4-unofficial-r7.0.4:latest
     container_name: mongodb_container
     ports:
-      - "27017:27017"
+      - "27017"
     volumes:
       - ~/contenedores/no_drive/db/mongodb_data:/data/db
     networks:
