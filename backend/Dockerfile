@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR ./
+WORKDIR ./backend
 
 COPY package*.json ./
 RUN npm install
