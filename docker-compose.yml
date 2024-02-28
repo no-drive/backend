@@ -13,6 +13,7 @@ services:
       - app-network
 
   mysql:
+    container_name: MYSQL_DATABASE
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -25,6 +26,7 @@ services:
       - app-network
 
   mongo:
+    container_name: mongo_database
     image: mongo:latest
     ports:
       - "27017:27017"  # Puerto del contenedor:Puerto del host
