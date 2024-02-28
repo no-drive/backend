@@ -8,3 +8,5 @@ node_modules/
 
 #Ignorar carpeta de fiels
 src/files
+
+./package-lock.json
