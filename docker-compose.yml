@@ -10,7 +10,7 @@ services:
       - mysql
     networks:
       app-network:
-        ipv4_address: 10.0.0.4
+        ipv4_address: 11.0.0.4
 
   mysql:
     container_name: MYSQL_DATABASE
@@ -24,14 +24,14 @@ services:
       - ~/contenedores/no_drive/db/mysql_data:/var/lib/mysql
     networks:
       app-network:
-        ipv4_address: 10.0.0.3
+        ipv4_address: 11.0.0.3
 
 networks:
   app-network:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.0.0.0/16
+        - subnet: 11.0.0.0/16
    
 
 
