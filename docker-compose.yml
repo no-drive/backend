@@ -3,6 +3,7 @@ version: '3'
 services:
   backend:
     build: ./ # Ruta al Dockerfile del backend
+    container_name: backend_container
     ports:
       - "3000:3000"  # Puerto del contenedor:Puerto del host
     depends_on:
@@ -88,7 +89,7 @@ networks:
 
 
 
-   
+
 
 
 
