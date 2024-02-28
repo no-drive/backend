@@ -13,8 +13,6 @@ RUN npm install --production
 # Copy the rest of the application
 COPY . .
 
-# Expose the port on which the app runs
-EXPOSE 3000
 
 # Run the application
 CMD ["node", "index.js"]
