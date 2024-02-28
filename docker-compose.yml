@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    build: Dockerfile.yml  # Ruta al Dockerfile del backend
+    build: ./backend/Dockerfile.yml  # Ruta al Dockerfile del backend
     ports:
       - "3000:3000"  # Puerto del contenedor:Puerto del host
     depends_on:
