@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://192.168.56.1:27017/nueva', {
+mongoose.connect('mongodb://192.168.1.59:27017/nueva', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
