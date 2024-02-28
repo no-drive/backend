@@ -1,13 +1,20 @@
-From node:hydrogen-alpine3.19
+# Use a lightweight Node.js image
+FROM node:alpine AS build
 
-# Establecer el directorio de trabajo en el directorio actual
-WORKDIR ./
+# Set the working directory
+WORKDIR /app
 
-# Copiar el archivo package.json al directorio de trabajo
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Copiar el resto de la aplicación al directorio de trabajo
-COPY . ./
+# Install dependencies
+RUN npm install --production
 
-# Comando por defecto para ejecutar la aplicación
+# Copy the rest of the application
+COPY . .
+
+# Expose the port on which the app runs
+EXPOSE 3000
+
+# Run the application
 CMD ["node", "index.js"]
