@@ -12,7 +12,5 @@ RUN npm install --production
 
 # Copy the rest of the application
 COPY . .
-
-
 # Run the application
 CMD ["node", "index.js"]
