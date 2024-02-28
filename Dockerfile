@@ -1,15 +1,18 @@
 FROM node:alpine
 
-# Establece el directorio de trabajo en el directorio actual
+# Establecer el directorio de trabajo en el directorio actual
 WORKDIR ./
 
-# Copia el archivo package.json al directorio de trabajo
+# Limpiar la caché de npm
+RUN npm cache clean --force
+
+# Copiar el archivo package.json al directorio de trabajo
 COPY package*.json ./
 
-# Instala las dependencias
+# Instalar las dependencias
 RUN npm install
 
-# Copia el resto de la aplicación al directorio de trabajo
+# Copiar el resto de la aplicación al directorio de trabajo
 COPY . ./
 
 # Comando por defecto para ejecutar la aplicación
