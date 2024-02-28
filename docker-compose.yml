@@ -18,6 +18,8 @@ services:
       MYSQL_DATABASE: root
     ports:
       - "3306:3306"  # Puerto del contenedor:Puerto del host
+    volumes:
+      - ~/contenedores/no_drive/db/mysql_data:/var/lib/mysql
     networks:
       - app-network
 
@@ -25,6 +27,8 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"  # Puerto del contenedor:Puerto del host
+    volumes:
+      - ~/contenedores/no_drive/db/mongo_data:/data/db   
     networks:
       - app-network
 
