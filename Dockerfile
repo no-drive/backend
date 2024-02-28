@@ -1,10 +1,10 @@
-FROM node:alpine
+From node:hydrogen-alpine3.19
 
 # Establecer el directorio de trabajo en el directorio actual
 WORKDIR ./
 
-# Limpiar la caché de npm
-RUN npm cache clean --force
+# Eliminar el directorio .npm si existe
+RUN rm -rf .npm
 
 # Copiar el archivo package.json al directorio de trabajo
 COPY package*.json ./
