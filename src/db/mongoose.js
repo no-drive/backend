@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost:27017/nueva', {
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
+db.on('error', console.error.bind(console, 'Error de conexión a la base de datos de mongo:'));
 db.once('open', () => {
   console.log('Conexión exitosa a la base de datos.');
 });
