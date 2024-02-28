@@ -1,8 +1,9 @@
-version: '3'
+version: '3.8'
 
 services:
   backend:
     build: ./ # Ruta al Dockerfile del backend
+    command: bash -c 'docker stop backend_container || true && docker rm -f backend_container || true'
     container_name: backend_container
     ports:
       - "3000:3000"  # Puerto del contenedor:Puerto del host
@@ -34,11 +35,6 @@ services:
       - ~/contenedores/no_drive/db/mongo_data:/data/db   
     networks:
       - app-network
-# Comando personalizado para detener y eliminar el contenedor si ya está en ejecución
-before_script:
-  - docker-compose stop backend_container || true
-  - docker-compose rm -f backend_container || true
-
 networks:
   app-network:
     driver: bridge
