@@ -27,6 +27,16 @@ services:
     networks:
       app-network:
         ipv4_address: 11.0.0.3
+  mongodb:
+    image: mongodb-raspberrypi4-unofficial-r7.0.4:latest
+    container_name: mongodb_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/contenedores/no_drive/db/mongodb_data:/data/db
+    networks:
+      app-network:
+        ipv4_address: 11.0.0.5
 
 networks:
   app-network:
