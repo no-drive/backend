@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize('_gestionarchivos', 'root', 'root', {
-  host: 'localhost',
+  host: '11.0.0.0.3',
   dialect: 'mysql',
 });
 
