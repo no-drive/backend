@@ -1,0 +1,39 @@
+name: levantar-contenedores-de-docker
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '**.yml'
+
+jobs:
+  traer_cambios:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout del Repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          clean: false   # Desactivar la limpieza del repositorio
+
+  levantar_contenedores:
+    runs-on: self-hosted
+    needs: traer_cambios
+    steps:
+      - name: Creando los contenedores
+        run: |
+          cd ${{ github.workspace }} || exit 1 # Navegar al directorio del repositorio clonado
+              for archivo in *; do
+              if [ -d "$archivo" ]; then
+                  # Intentar cambiar al directorio
+                  if cd "$archivo"; then
+                      # Si se puede cambiar al directorio, ejecutar docker-compose
+                      docker-compose up -d
+                      # Regresar al directorio anterior
+                      cd ..
+                  else
+                      # Si no se puede cambiar al directorio, mostrar un mensaje de advertencia
+                      echo "No se puede cambiar al directorio $archivo, omitiéndolo."
+                  fi
+              fi
+          done
