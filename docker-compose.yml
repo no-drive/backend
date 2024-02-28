@@ -8,6 +8,8 @@ services:
       - "3001:3001"  # Puerto del contenedor:Puerto del host
     depends_on:
       - mysql
+    volumes:
+      - ./src:/app/src
     networks:
       app-network:
         ipv4_address: 11.0.0.4
