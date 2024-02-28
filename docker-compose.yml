@@ -11,6 +11,10 @@ services:
       - mongo
     networks:
       - app-network
+# Comando personalizado para detener y eliminar el contenedor si ya está en ejecución
+before_script:
+  - docker-compose stop backend_container || true
+  - docker-compose rm -f backend_container || true
 
   mysql:
     container_name: MYSQL_DATABASE
