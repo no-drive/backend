@@ -3,13 +3,11 @@ version: '3.8'
 services:
   backend:
     build: ./ # Ruta al Dockerfile del backend
-    command: bash -c 'docker stop backend_container || true && docker rm -f backend_container || true'
     container_name: backend_container
     ports:
       - "3000:3000"  # Puerto del contenedor:Puerto del host
     depends_on:
       - mysql
-      - mongo
     networks:
       - app-network
 
@@ -26,15 +24,6 @@ services:
     networks:
       - app-network
 
-  mongo:
-    container_name: mongo_database
-    image: mongo:latest
-    ports:
-      - "27017:27017"  # Puerto del contenedor:Puerto del host
-    volumes:
-      - ~/contenedores/no_drive/db/mongo_data:/data/db   
-    networks:
-      - app-network
 networks:
   app-network:
     driver: bridge
