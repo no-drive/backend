@@ -15,4 +15,4 @@ COPY . .
 
 
 # Run the application
-CMD ["node", "app/src/index.js"]
+CMD ["node", "index.js"]

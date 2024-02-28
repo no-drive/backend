@@ -26,7 +26,7 @@ jobs:
                   # Intentar cambiar al directorio
                   if cd "$archivo"; then
                       # Si se puede cambiar al directorio, ejecutar docker-compose
-                      docker-compose kill;
+                      #docker-compose kill;
                       docker-compose up -d;
                       # Regresar al directorio anterior
                       cd ..
