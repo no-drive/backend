@@ -2,8 +2,7 @@
 FROM node:latest
 
 # Establece el directorio de trabajo en /app
-WORKDIR /app
-
+WORKDIR /src
 # Copia el archivo package.json y package-lock.json
 COPY package*.json ./
 
@@ -17,4 +16,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando por defecto para ejecutar la aplicación
-CMD ["node", "app.js"]
+CMD ["node", "index.js"]
