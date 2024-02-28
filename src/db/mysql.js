@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize('_gestionarchivos', 'root', 'root', {
+const sequelize = new Sequelize('gestionarchivos', 'root', 'root', {
   host: '192.168.1.59',
   dialect: 'mysql',
 });
