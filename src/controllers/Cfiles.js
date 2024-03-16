@@ -8,7 +8,7 @@ import { getShare } from '../controllers/Cshare.js';
  */
 
 let _imagen = {};
-export const path = "C:/Users/alejo/OneDrive/Documentos/repositorios/no-drive/backend/src/";
+export const path = "/home/gitactions/runner_no_drive/_work/backend/backend";
 
 const storage = multer.diskStorage(
   {
