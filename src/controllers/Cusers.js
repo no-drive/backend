@@ -135,7 +135,7 @@ export function allPeople() {
 
     try {
       //Traer todos los usuarios que se encuentran logeados en la aplicación 
-      const [results] = await sequelize.query('	select idusuario,nameUsuario from _gestionArchivos.usuarios;', { raw: true, type: sequelize.QueryTypes.RAW, multiple: true });
+      const [results] = await sequelize.query('	select idusuario,nameUsuario from gestionArchivos.usuarios;', { raw: true, type: sequelize.QueryTypes.RAW, multiple: true });
       console.log(results);
       resolve(results);
     } catch (error) {
