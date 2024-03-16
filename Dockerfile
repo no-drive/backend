@@ -13,4 +13,6 @@ RUN npm install --production
 # Copy the rest of the application
 COPY . .
 # Run the application
+RUN  ["mkdir", "/files"]
+
 CMD ["node", "./src/index.js"]

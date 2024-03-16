@@ -9,6 +9,7 @@ services:
     depends_on:
       - mysql
     volumes:
+      -/home/gitactions/contenedores/no_drive/file:/files
       - ./src:/app/src
     networks:
       app-network:
